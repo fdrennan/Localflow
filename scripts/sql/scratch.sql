@@ -11,6 +11,17 @@ create view public.stream_submissions as (
     from public.stream_submissions_all
 );
 
-select max(created_utc)
-from public.stream_comments
+select created_utc, count(*) as n_obs
+from (
+     select date_round(created_utc, '5 minutes') as created_utc
+from public.streamall
 
+         ) x
+group by created_utc
+order by created_utc desc
+
+
+
+select *
+from public.streamall
+order by created_utc desc

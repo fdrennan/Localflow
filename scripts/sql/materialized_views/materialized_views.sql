@@ -11,6 +11,12 @@ create materialized view public.mat_comments_by_second as (
     order by created_utc desc
 );
 
+create materialized view public.mat_submissions_by_second as (
+    select created_utc, count(*) as n_observations
+    from public.stream_submissions_all
+    group by created_utc
+    order by created_utc desc
+);
 
 
 drop materialized view if exists public.streamall_meta_data;
