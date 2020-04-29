@@ -12,7 +12,7 @@ args = {
 }
 dag = DAG(dag_id='refresh_materialized_views',
           default_args=args,
-          schedule_interval='* * * * *',
+          schedule_interval='*/15 * * * *',
           concurrency=1,
           max_active_runs=1,
           catchup=False)
