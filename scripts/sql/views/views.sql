@@ -160,7 +160,7 @@ create view public.stream_submissions as (
 
 
 drop view if exists public.stream_authors;
-create view public.stream_authors as (
+create view view public.stream_authors as (
     with mapping_data as (
         select subreddit, author
         from public.stream_submissions_all
@@ -175,4 +175,3 @@ create view public.stream_authors as (
     order by subreddit, author
 
 );
-
